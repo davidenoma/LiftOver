@@ -41,9 +41,4 @@ python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.p
 python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.prefix
 ```
 
-## Source
-The latest version of the script can be found at [GitHub - davidenoma/LiftOver](https://github.com/davidenoma/LiftOver).
 
----
-
-Feel free to copy and paste this Markdown content into your README.md file on GitHub. Adjust any details as needed to match your specific script and project requirements.
