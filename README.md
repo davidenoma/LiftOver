@@ -1,8 +1,7 @@
-Certainly! Here's a well-formatted version of the documentation for your GitHub README.md file:
 
 ---
 
-# LiftOver Python Script
+# Plink LiftOver Python Script
 
 ## Overview
 This Python script facilitates lifting of genetic data files (MAP, PED, and DAT formats) from one genome version to another using the `liftOver` tool. The script converts input files to BED format, performs lifting, and converts back to the original format, providing a seamless transition between genome versions.
