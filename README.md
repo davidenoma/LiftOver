@@ -4,7 +4,15 @@
 # Plink LiftOver Python Script
 
 ## Overview
-This Python script facilitates lifting of genetic data files (MAP, PED, and DAT formats) from one genome version to another using the `liftOver` tool. The script converts input files to BED format, performs lifting, and converts back to the original format, providing a seamless transition between genome versions.
+This Python script facilitates lifting of genetic data files (MAP, PED, and DAT formats) from one genome version to another using the `liftOver` tool . 
+```bash
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/liftOver
+export PATH=$PATH:/~liftOver PATH
+
+```
+
+
+The script converts input files to BED format, performs lifting, and converts back to the original format, providing a seamless transition between genome versions.
 
 ## Usage
 ```bash
