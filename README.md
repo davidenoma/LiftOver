@@ -43,6 +43,7 @@ python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.p
 
 ## Dependencies
 - Ensure that the `liftOver` tool is installed and accessible in the system path.
+- Ensure that you get the appropriate chain file from https://hgdownload2.soe.ucsc.edu/downloads.html 
 
 ## Example
 ```bash
