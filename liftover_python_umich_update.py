@@ -40,23 +40,25 @@ LIFTED_SET = set()
 UNLIFTED_SET = set()
 
 
-def liftBed(fin, fout, unlifted):
+def liftBed(fin, fout, unlifted, LIFTOVER_BIN, CHAIN):
     params = dict()
-    params['LIFTOVER_BIN'] = '/home/david.enoma/software/liftOver'
+    params['LIFTOVER_BIN'] = LIFTOVER_BIN
     params['OLD'] = fin
-    params['CHAIN'] = 'GRCh37_to_GRCh38.chain.gz'
+    params['CHAIN'] = CHAIN
     params['NEW'] = fout
-    params['UNLIFTED'] = fout + '.unlifted'
+    params['UNLIFTED'] = unlifted
     from string import Template
     cmd = Template('$LIFTOVER_BIN $OLD $CHAIN $NEW $UNLIFTED')
     cmd = cmd.substitute(params)
     os.system(cmd)
-    # record lifted/unliftd rs
+    # record lifted/unlifted rs
     for ln in myopen(params['UNLIFTED']):
-        if len(ln) == 0 or ln[0] == '#': continue
+        if len(ln) == 0 or ln[0] == '#':
+            continue
         UNLIFTED_SET.add(ln.strip().split()[-1])
     for ln in myopen(params['NEW']):
-        if len(ln) == 0 or ln[0] == '#': continue
+        if len(ln) == 0 or ln[0] == '#':
+            continue
         LIFTED_SET.add(ln.strip().split()[-1])
 
     return True
@@ -112,14 +114,11 @@ def liftPed(fin, fout, fOldMap):
     return True
 
 
-
 def makesure(result, succ_msg, fail_msg="ERROR"):
     if result:
-        print
-        'SUCC: ', succ_msg
+        print('SUCC: ', succ_msg)
     else:
-        print
-        'FAIL: ', fail_msg
+        print('FAIL: ', fail_msg)
         sys.exit(2)
 
 
@@ -131,6 +130,8 @@ if __name__ == '__main__':
     parser.add_argument('-p', dest='pedFile')
     parser.add_argument('-d', dest='datFile')
     parser.add_argument('-o', dest='prefix', required=True)
+    parser.add_argument('--LIFTOVER_BIN', dest='LIFTOVER_BIN')
+    parser.add_argument('--CHAIN', dest='CHAIN')
     args = parser.parse_args()
 
     oldBed = args.mapFile + '.bed'
@@ -139,7 +140,7 @@ if __name__ == '__main__':
 
     newBed = args.prefix + '.bed'
     unlifted = args.prefix + '.unlifted'
-    makesure(liftBed(oldBed, newBed, unlifted),
+    makesure(liftBed(oldBed, newBed, unlifted, args.LIFTOVER_BIN, args.CHAIN),
              'liftBed succ')
 
     newMap = args.prefix + '.map'
