@@ -40,11 +40,11 @@ LIFTED_SET = set()
 UNLIFTED_SET = set()
 
 
-def liftBed(fin, fout, unlifted, LIFTOVER_BIN, CHAIN):
+def liftBed(fin, fout, unlifted):
     params = dict()
-    params['LIFTOVER_BIN'] = LIFTOVER_BIN
+    params['LIFTOVER_BIN'] = args.LIFTOVER_BIN
     params['OLD'] = fin
-    params['CHAIN'] = CHAIN
+    params['CHAIN'] = args.CHAIN
     params['NEW'] = fout
     params['UNLIFTED'] = unlifted
     from string import Template
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     parser.add_argument('-o', dest='prefix', required=True)
     parser.add_argument('--LIFTOVER_BIN', dest='LIFTOVER_BIN')
     parser.add_argument('--CHAIN', dest='CHAIN')
-    args = parser.parse_args()
+    global args = parser.parse_args()
 
     oldBed = args.mapFile + '.bed'
     makesure(map2bed(args.mapFile, oldBed),
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
     newBed = args.prefix + '.bed'
     unlifted = args.prefix + '.unlifted'
-    makesure(liftBed(oldBed, newBed, unlifted, args.LIFTOVER_BIN, args.CHAIN),
+    makesure(liftBed(oldBed, newBed, unlifted),
              'liftBed succ')
 
     newMap = args.prefix + '.map'
