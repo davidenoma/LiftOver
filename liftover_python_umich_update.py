@@ -132,7 +132,7 @@ if __name__ == '__main__':
     parser.add_argument('-o', dest='prefix', required=True)
     parser.add_argument('--LIFTOVER_BIN', dest='LIFTOVER_BIN')
     parser.add_argument('--CHAIN', dest='CHAIN')
-    global args = parser.parse_args()
+    args = parser.parse_args()
 
     oldBed = args.mapFile + '.bed'
     makesure(map2bed(args.mapFile, oldBed),
