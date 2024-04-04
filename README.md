@@ -24,6 +24,7 @@ python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o ne
 ## Arguments
 - `-m, --map`: Input MAP file containing genetic marker information (required).
 - `-p, --ped`: Input PED file containing genotype information (optional).
+- `-c, --chain`: Liftover Chain File.
 - `-o, --prefix`: Prefix for output files (required).
 
 ## Functions
