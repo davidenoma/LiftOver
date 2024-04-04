@@ -34,7 +34,6 @@ python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o ne
 4. `map2bed(fin, fout)`: Converts MAP file to BED format.
 5. `liftBed(fin, fout, unlifted)`: Lifts BED file using `liftOver` tool.
 6. `bed2map(fin, fout)`: Converts BED file back to MAP format.
-7. `liftDat(fin, fout)`: Lifts DAT file.
 8. `liftPed(fin, fout, fOldMap)`: Lifts PED file.
 
 ## Execution
@@ -54,6 +53,6 @@ plink --bfile {prefix} --recode --out {output_file_name}
 To re-obtain binary formats we do:
 ```
 plink --file {} --recode --make-bed --out {output_file_name}
-
+```
 
 
