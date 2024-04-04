@@ -26,6 +26,7 @@ python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o ne
 - `-p, --ped`: Input PED file containing genotype information (optional).
 - `-c, --chain`: Liftover Chain File.
 - `-o, --prefix`: Prefix for output files (required).
+- `--LIFTOVER_BIN`: Lifover Binaries.
 
 ## Functions
 1. `usage()`: Prints the usage information of the script.
