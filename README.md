@@ -4,7 +4,9 @@
 # Plink LiftOver Python Script
 
 ## Overview
-This Python script facilitates lifting of genetic data files (MAP, PED, and DAT formats) from one genome version to another using the `liftOver` tool . 
+This Python script facilitates lifting of genetic data files (Plink format MAP, PED) from one Human genome build version to another using the `liftOver` tool . 
+It can liftover from easily between multiple builds available. E.g Hg19, Hg18, GRCH36 and others. 
+
 ```bash
 wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/liftOver
 export PATH=$PATH:/~liftOver PATH
@@ -16,13 +18,12 @@ The script converts input files to BED format, performs lifting, and converts ba
 
 ## Usage
 ```bash
-python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.prefix
+python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o new.prefix
 ```
 
 ## Arguments
 - `-m, --map`: Input MAP file containing genetic marker information (required).
 - `-p, --ped`: Input PED file containing genotype information (optional).
-- `-d, --dat`: Input DAT file containing additional data (optional).
 - `-o, --prefix`: Prefix for output files (required).
 
 ## Functions
@@ -43,11 +44,15 @@ python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.p
 
 ## Dependencies
 - Ensure that the `liftOver` tool is installed and accessible in the system path.
-- Ensure that you get the appropriate chain file from https://hgdownload2.soe.ucsc.edu/downloads.html 
-
-## Example
-```bash
-python liftover_python_umich_update.py -m old.map -p old.ped -d old.dat -o new.prefix
+- Ensure that you get the appropriate chain file (that conversts one build to another) from https://hgdownload2.soe.ucsc.edu/downloads.html
+- Plink genotype files can be recoded from binary (bed, bim and fam) to text (map and ped) formats
 ```
+plink --bfile {prefix} --recode --out {output_file_name}
+
+```
+To re-obtain binary formats we do:
+```
+plink --file {} --recode --make-bed --out {output_file_name}
+
 
 
