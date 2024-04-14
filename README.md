@@ -24,7 +24,7 @@ python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o ne
 ## Arguments
 - `-m, --map`: Input MAP file containing genetic marker information (required).
 - `-p, --ped`: Input PED file containing genotype information (optional).
-- `-c, --chain`: Liftover Chain File.
+- `-- CHAIN`: Liftover Chain File.
 - `-o, --prefix`: Prefix for output files (required).
 - `--LIFTOVER_BIN`: Lifover Binaries.
 
@@ -41,6 +41,12 @@ python liftover_python_umich_update.py -m old.map -p old.ped -c chain_file -o ne
 - The script parses command-line arguments.
 - Converts MAP to BED format.
 - Performs lifting using `liftOver`.
+- LIFTOVER_BIN
+```bash
+$ wget https://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/liftOver
+$ chmod +x ./filePath/liftOver
+$ ./filePath/liftOver
+```
 - Converts lifted files back to original formats.
 
 ## Dependencies
